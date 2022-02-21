@@ -7,10 +7,9 @@ import {
 } from "@expo-google-fonts/rajdhani";
 import AppLoading from "expo-app-loading";
 
-import { SignIn } from "./src/screens/sign-in";
+import { Routes } from "./src/routes";
 import { Background } from "./src/components/background";
 import { StatusBar } from "react-native";
-import { Home } from "./src/screens/home";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -32,7 +31,7 @@ export default function App() {
         translucent
       />
 
-      <Home />
+      <Routes />
     </Background>
   );
 }

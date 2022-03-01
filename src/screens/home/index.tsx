@@ -6,6 +6,12 @@ import { Profile } from "../../components/profile";
 import { styles } from "./styles";
 
 export function Home() {
+  const [category, setCategory] = React.useState("");
+
+  function handleCategorySelect(categoryId: string){
+    categoryId == category ? setCategory("") : setCategory(categoryId);
+  }
+
   return (
     <View>
       <View style={styles.header}>
@@ -14,7 +20,9 @@ export function Home() {
       </View>
 
       <View>
-        <CategorySelect></CategorySelect>
+        <CategorySelect 
+          categorySelected={category}
+          setCategory={handleCategorySelect}></CategorySelect>
       </View>
     </View>
   );

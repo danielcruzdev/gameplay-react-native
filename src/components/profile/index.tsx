@@ -1,33 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Alert } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 
 import { useAuth } from '../../hooks/auth';
 
 import { Avatar } from '../Avatar';
+import { LogOff } from '../LogOff';
+import { ModalView } from '../ModalView';
 import { styles } from './styles';
 
 export function Profile() {
   const { user, singOut } = useAuth();
+  const [ openLogOff, setOpenLogOff] = useState(false);
 
-  function handleSignOut() {
-    Alert.alert('Logout', 'Deseja sair do GamePlay?',
-    [
-      {
-        text: 'Não',
-        style: 'cancel'
-      },
-      {
-        text: 'Sim',
-        onPress: () => singOut()
-      }
-    ])
+
+  function handleOptionLogOff(option: boolean){
+    if(option){
+      singOut()
+    }
+  }
+
+  function handleOpenLogOff(){
+    setOpenLogOff(true);
+  }
+
+  function handleCloseLogOff(){
+    setOpenLogOff(false);
   }
 
   return (
     <View style={styles.container}>
     
-      <RectButton onPress={handleSignOut}>
+      <RectButton onPress={handleOpenLogOff}>
         <Avatar urlImage={user.avatar} />
       </RectButton>
 
@@ -46,6 +50,10 @@ export function Profile() {
           Hoje é dia de vitória
         </Text>
       </View>
+
+      <ModalView visible={openLogOff} closeModal={handleCloseLogOff}>
+        <LogOff handleOptionLogOff={handleOptionLogOff}/>
+      </ModalView>
 
     </View>
   )

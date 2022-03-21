@@ -34,7 +34,7 @@ export function ModalView({
               <View style={styles.bar} />
               {children}
             </Background>
-          </View>
+          </View> 
         </View>
       </TouchableWithoutFeedback>
     </Modal>

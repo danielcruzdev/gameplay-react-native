@@ -6,7 +6,7 @@ import { useAuth } from '../../hooks/auth';
 
 import { Avatar } from '../Avatar';
 import { LogOff } from '../LogOff';
-import { ModalView } from '../ModalView';
+import { ModalLogOffView } from '../ModalLogOffView';
 import { styles } from './styles';
 
 export function Profile() {
@@ -51,9 +51,9 @@ export function Profile() {
         </Text>
       </View>
 
-      <ModalView visible={openLogOff} closeModal={handleCloseLogOff}>
+      <ModalLogOffView visible={openLogOff} closeModal={handleCloseLogOff}>
         <LogOff handleOptionLogOff={handleOptionLogOff}/>
-      </ModalView>
+      </ModalLogOffView>
 
     </View>
   )

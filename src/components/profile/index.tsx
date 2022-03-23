@@ -11,26 +11,28 @@ import { styles } from './styles';
 
 export function Profile() {
   const { user, singOut } = useAuth();
-  const [ openLogOff, setOpenLogOff] = useState(false);
+  const [openLogOff, setOpenLogOff] = useState(false);
 
 
-  function handleOptionLogOff(option: boolean){
+  function handleOptionLogOff(option: boolean) {
     if(option){
       singOut()
     }
+
+    handleCloseLogOff();
   }
 
-  function handleOpenLogOff(){
+  function handleOpenLogOff() {
     setOpenLogOff(true);
   }
 
-  function handleCloseLogOff(){
+  function handleCloseLogOff() {
     setOpenLogOff(false);
   }
 
   return (
     <View style={styles.container}>
-    
+
       <RectButton onPress={handleOpenLogOff}>
         <Avatar urlImage={user.avatar} />
       </RectButton>
@@ -40,9 +42,9 @@ export function Profile() {
           <Text style={styles.greeting}>
             Olá,
           </Text>
-          
+
           <Text style={styles.username}>
-            { user.firstName }
+            {user.firstName}
           </Text>
         </View>
 
@@ -52,7 +54,7 @@ export function Profile() {
       </View>
 
       <ModalLogOffView visible={openLogOff} closeModal={handleCloseLogOff}>
-        <LogOff handleOptionLogOff={handleOptionLogOff}/>
+        <LogOff handleOptionLogOff={handleOptionLogOff} />
       </ModalLogOffView>
 
     </View>

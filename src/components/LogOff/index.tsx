@@ -1,7 +1,6 @@
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { styles } from './styles'
-import { RectButton } from 'react-native-gesture-handler';
 
 type Props = {
   handleOptionLogOff: (option: boolean) => void;
@@ -18,18 +17,18 @@ export function LogOff({ handleOptionLogOff }: Props) {
 
       <View style={styles.buttons}>
         <View style={styles.viewButtonNao}>
-          <RectButton style={styles.buttonNao}>
+          <TouchableOpacity style={styles.buttonNao} onPress={() => handleOptionLogOff(false)}>
             <Text style={styles.titleButton}>
               Não
             </Text>
-          </RectButton>
+          </TouchableOpacity>
         </View>
         <View style={styles.viewButtonSim}>
-          <RectButton style={styles.buttonSim}>
+          <TouchableOpacity style={styles.buttonSim} onPress={() => handleOptionLogOff(true)}>
             <Text style={styles.titleButton}>
               Sim
             </Text>
-          </RectButton>
+          </TouchableOpacity>
         </View>
       </View>
     </View>

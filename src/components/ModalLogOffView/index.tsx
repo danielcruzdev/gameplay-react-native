@@ -31,7 +31,6 @@ export function ModalLogOffView({
         <View style={styles.overlay}>
           <View style={styles.container}>
             <Background>
-              <View style={styles.bar} />
               {children}
             </Background>
           </View> 
